@@ -2,6 +2,7 @@ LICENSE.txt
 MANIFEST.in
 README.md
 requirements.txt
+setup.py
 learning/__init__.py
 learning/__main__.py
 learning/active.py
