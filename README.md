@@ -29,8 +29,8 @@ THIS README FILE IS A WORK IN PROGRESS! I suggest checking the pdf file and the 
     self.update()
       update the pool
 
-    self.qbc method
-      query method used by the committee 'least_confident', 'margin' or 'entropy'
+    self.qbc_method
+      criteria used by the committee: 'least_confident', 'margin' or 'entropy'
 
     self.qbc_sampling
       percentage of the data sampled at each iteration (bootstraping)
@@ -39,7 +39,7 @@ THIS README FILE IS A WORK IN PROGRESS! I suggest checking the pdf file and the 
       number of commitees formed using the boostraped data.
 
 
-[3] Some possible scenarios *
+[3] Some possible scenarios 
 
       scenario_data = {'uncertainty':{0:['least_confident','none','none'],
       1:['margin','none','none'],
@@ -65,8 +65,6 @@ THIS README FILE IS A WORK IN PROGRESS! I suggest checking the pdf file and the 
           obj.fit()
           result[j*sample_size]=obj.accuracy_bin
 
-
-The codes were used with a structure of folders that pre-existed in my computer. Thus the main script will ask for folders that won't exist on a third party computer. I haven't organized an implementation that creates all folder automatically, but I'm attaching the files to illustrate the ideas.
 
 The main archive is active.py which is a class that does all active learning work. This is a work in progress but for the purpose of the final project, it has all implementations ready to go. Since providing these files werent required I haven't added explanations. However, looking at the paper's diagram, the main file, and the active class should give a good idea of whats happening in the background.
 
