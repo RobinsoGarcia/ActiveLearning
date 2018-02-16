@@ -7,10 +7,12 @@ import os
 import pandas as pd
 from pandas.tools.plotting import andrews_curves
 from sklearn.cluster import KMeans
-
 import matplotlib.pyplot as plt
+import learning
 #%matplotlib inline
 #plt.style.use('ggplot')
+
+hmdr = os.path.join(learning.__path__[0],'UCI_datasets/')
 
 def get_blob(r,std):
     A,b= make_blobs(n_samples=2000,centers=5,cluster_std=std,n_features=2,random_state=r)
@@ -214,7 +216,7 @@ def load(dataset):
         return X,y,X_,y_
 
     elif dataset=='pama-indians':
-        load=np.loadtxt('UCI_datasets/pama_indians.csv',delimiter=",")
+        load=np.loadtxt(hmdr+'/pama_indians.csv',delimiter=",")
         target = load[:,load.shape[1]-1]
         data = load[:,:load.shape[1]-1]
         count=0
@@ -243,7 +245,7 @@ def load(dataset):
         return X,y,X_,y_
 
     elif dataset=='liver':
-        load=np.loadtxt('UCI_datasets/liver.csv',delimiter=",")
+        load=np.loadtxt(hmdr+'liver.csv',delimiter=",")
         target = load[:,load.shape[1]-1]
         data = load[:,:load.shape[1]-1]
 
@@ -275,7 +277,7 @@ def load(dataset):
 
 
     elif dataset=='crx':
-        load=pd.read_csv('UCI_datasets/crx.csv')
+        load=pd.read_csv(hmdr+'/crx.csv')
         load.dtypes
         load = pd.get_dummies(load)
         target = load['p'].as_matrix()
@@ -311,7 +313,7 @@ def load(dataset):
 
 
     elif dataset=='tictac':
-        load=pd.read_csv('UCI_datasets/tictac.csv')
+        load=pd.read_csv(hmdr+'/tictac.csv')
         load.dtypes
         load = pd.get_dummies(load)
         target = load['p'].as_matrix()

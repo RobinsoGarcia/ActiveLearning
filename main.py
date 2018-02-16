@@ -1,10 +1,10 @@
 from learning.active import active as act
-from learning import datasets
+import learning.datasets as datasets
 import numpy as np
 import matplotlib.pyplot as plt
 from learning.post_process import get_charts,build_dataframe
 import time
-np.arange(15)+8
+
 sims = np.arange(3)+8+30
 sets = ['crx','breast_cancer','wine','tictac','pama-indians','liver','iris','digits']
 
@@ -17,16 +17,14 @@ for w in sims:
         min_pool = round(X.shape[0]*0.05)
         sample_size = round((X.shape[0]-min_pool)*0.7/20)
         iter_=20
-        '''
+
         scenario_data = {'uncertainty':{0:['least_confident','none','none'],
         1:['margin','none','none'],
         2:['entropy','none','none'],
         3:['least_confident','euclidean','none'],
         4:['margin','euclidean','none'],
-        5:['entropy','euclidean','none']}}
-        '''
-
-        scenario_data = {'boosting':{0:['boosting','euclidean','margin']},
+        5:['entropy','euclidean','none']},
+        'boosting':{0:['boosting','euclidean','margin']},
         'bagging':{0:['bagging','euclidean','margin']}}
 
         data_folder = set_
@@ -43,13 +41,10 @@ for w in sims:
                 print("case {}".format(scenario_data[i][j]))
                 case = scenario_data[i][j]
                 obj = act(X,y,X_,y_,method=case[0],density_method=case[1])
-
                 obj.qbc_sampling=0.4
                 obj.n_splits=1000
-
                 obj.min_pool = min_pool
                 obj.sample_size = sample_size
-
                 obj.set_pool()
                 obj.set_density()
                 obj.iter=iter_
@@ -59,9 +54,10 @@ for w in sims:
                 #np.save('main/'+data_folder+'/'+i+'/'+case[0]+'-'+case[1]+'-'+case[2]+'.npy',result)
             results[i]=result
 
-        np.save('main/'+data_folder+'/'+'results'+str(sim)+'.npy',results)
+        print(results)
+        #np.save('main/'+data_folder+'/'+'results'+str(sim)+'.npy',results)
         print('getting random')
-
+e
         rand=[]
         for j in np.arange(n_random):
             rand.append([])
@@ -75,13 +71,12 @@ for w in sims:
             obj2.fit()
             rand[j]=obj2.accuracy_bin
 
+        #np.save('main/'+ data_folder + '/random'+str(sim)+'.npy',rand)
+        #print('get charts')
+        #get_charts('main/'+data_folder,sim)
 
-        np.save('main/'+ data_folder + '/random'+str(sim)+'.npy',rand)
-        print('get charts')
-        get_charts('main/'+data_folder,sim)
-
-        dframe = build_dataframe('main/'+data_folder,str(sim))
-        dframe.to_csv('main/final_tables/'+set_+str(sim)+'.csv')
-        end_set = time.time()
-        print("time to conclude set: {}".format(end_set-start_set))
-        plt.close('all')
+        #dframe = build_dataframe('main/'+data_folder,str(sim))
+        #dframe.to_csv('main/final_tables/'+set_+str(sim)+'.csv')
+        #end_set = time.time()
+        #print("time to conclude set: {}".format(end_set-start_set))
+        #plt.close('all')

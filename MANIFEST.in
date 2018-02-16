@@ -1,0 +1,10 @@
+
+include final_project.pdf
+
+include LICENSE.txt
+
+include README.md
+
+include requirements.txt
+
+include learning/UCI_datasets/*.csv

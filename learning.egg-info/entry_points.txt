@@ -1,0 +1,3 @@
+[console_scripts]
+learning_main = learning.__main__:main
+

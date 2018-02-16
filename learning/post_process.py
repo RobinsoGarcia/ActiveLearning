@@ -6,13 +6,13 @@ import time
 #%matplotlib inline
 #plt.style.use('ggplot')
 
-def get_charts(datafolder,sim):
+def get_charts(datafolder,sim,results,random):
     sim = str(sim)
     hmd = datafolder+'/'
-    random = np.load(hmd+'random'+sim+'.npy')
+    random = random
     random_mean = np.mean(random,axis=0)
     random_std = np.std(random,axis=0)
-    array = np.load(hmd+'results'+sim+'.npy').tolist()
+    array = results
     scenario_per={}
     for j in array.keys():
         bin_ = array[j]
@@ -35,7 +35,8 @@ def get_charts(datafolder,sim):
             plt.xlabel('number of labelled samples')
             plt.fill_between(np.arange(mean.shape[0]),upl,lol,alpha=0.1)
             plt.plot(np.arange(mean.shape[0]),mean)
-            plt.savefig(hmd+j+'/'+k+sim)
+            plt.show()
+            #plt.savefig(hmd+j+'/'+k+sim)
             scenario_per[k]=np.sum(mean)
 
             plt.figure()
@@ -46,10 +47,11 @@ def get_charts(datafolder,sim):
             plt.plot(np.arange(mean.shape[0]),array[j][k],label='activeL')
             plt.plot(np.arange(mean.shape[0]),random_mean,label='random')
             plt.legend()
-            plt.savefig(hmd+j+'/'+k+'_accuracy'+sim)
+            plt.show()
+            #plt.savefig(hmd+j+'/'+k+'_accuracy'+sim)
 
 
-    np.save(hmd+'indicators'+sim+'.npy',scenario_per)
+    #np.save(hmd+'indicators'+sim+'.npy',scenario_per)
     print(scenario_per)
     pass
 
