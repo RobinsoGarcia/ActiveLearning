@@ -4,7 +4,7 @@ THIS README FILE IS A WORK IN PROGRESS! I suggest checking the pdf file and the 
     def __init__(self,X=[],y=[],X_=[],y_=[],method='random',density_method='none',sparse=False):
 
     X,y: Train data and labels
-    X_,y_: Test data and cluster_labels
+    X_,y_: Test data and labels
     method: type of active learning approach (see final_paper.pdf)
         eg: 'random', 'least_confident', 'margin' or 'entropy'
 
