@@ -1,5 +1,10 @@
 THIS README FILE IS A WORK IN PROGRESS! I suggest checking the pdf file and the bibliographic references for a better understanding of the code.
 
+The main archive is active.py which is a class that does all active learning work. This is a work in progress but for the purpose of the final project, it has all implementations ready to go. Since providing these files werent required I haven't added explanations. However, looking at the paper's diagram, the main file, and the active class should give a good idea of whats happening in the background.
+
+Again there are implementations on this file that goes beyond the scope of the project. For instance, there is a function called clustering, which is a preliminary test on using data structuring, bagging and stochastic method to select new queries (please disregard, though it is working).
+
+
 [1] class active():
     def __init__(self,X=[],y=[],X_=[],y_=[],method='random',density_method='none',sparse=False):
 
